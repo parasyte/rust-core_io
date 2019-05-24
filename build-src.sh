@@ -73,7 +73,7 @@ if [ $(uname) == 'Darwin' ]; then
 else
 	OLD_GIT_PERM=$(stat --printf=%a .git)
 fi
-trap "chmod $OLD_GIT_PERM .git; exit 1" SIGINT
+trap "chmod $OLD_GIT_PERM .git; exit 1" SIGINT exit
 chmod 000 .git
 cargo ${1:-package}
 chmod $OLD_GIT_PERM .git
